@@ -1,0 +1,287 @@
+/* ---------- Réglages généraux ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+    color: #222;
+    background: #FAF7F2;
+}
+
+h1, h2, h3 {
+    color: #14213D;
+    line-height: 1.2;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+main {
+    max-width: 70rem;
+    margin: 0 auto;
+    padding: 1rem;
+    min-height: 60vh;
+}
+
+/* ---------- En-tête et navigation ---------- */
+header {
+    background: #14213D;
+    color: white;
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    margin: 0;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#bouton-menu {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+header nav {
+    display: none;
+    width: 100%;
+}
+
+header nav.ouvert {
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 0.6rem 0;
+}
+
+nav a:hover {
+    color: #F2A65A;
+}
+
+/* ---------- Bannière et boutons ---------- */
+.banniere {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.bouton,
+button {
+    display: inline-block;
+    background: #1F8A5B;
+    color: white;
+    padding: 0.7rem 1.1rem;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font: inherit;
+}
+
+.bouton:hover,
+button:hover {
+    background: #166B46;
+}
+
+button.danger {
+    background: #B42318;
+}
+
+button.danger:hover {
+    background: #821B13;
+}
+
+/* ---------- Cartes de plats ---------- */
+.liste-plats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.carte-plat {
+    background: white;
+    border: 1px solid #E0DDD5;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.carte-plat img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.prix {
+    color: #D9692A;
+    font-weight: bold;
+}
+
+/* ---------- Menu dynamique et filtres ---------- */
+.filtres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.filtre.actif {
+    background: #14213D;
+}
+
+.liste-menu {
+    padding-left: 1.5rem;
+}
+
+.liste-menu li {
+    background: white;
+    border: 1px solid #E0DDD5;
+    border-radius: 5px;
+    padding: 0.7rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ---------- Formulaires ---------- */
+form {
+    margin: 1rem 0;
+}
+
+form label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    padding: 0.7rem;
+    margin-top: 0.3rem;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font: inherit;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* ---------- Messages flash ---------- */
+.message {
+    padding: 0.8rem;
+    border-radius: 5px;
+}
+
+.succes {
+    color: #155724;
+    background: #D4EDDA;
+}
+
+.erreur {
+    color: #721C24;
+    background: #F8D7DA;
+}
+
+/* ---------- Tableau ---------- */
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #DDD;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+th {
+    background: #14213D;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #E9E4DA;
+}
+
+footer a {
+    color: #14213D;
+}
+
+/* ---------- Tablette et ordinateur ---------- */
+@media (min-width: 768px) {
+    #bouton-menu {
+        display: none;
+    }
+
+    header nav {
+        display: block;
+        width: auto;
+    }
+
+    nav ul {
+        flex-direction: row;
+        gap: 1.5rem;
+        padding-top: 0;
+    }
+
+    .liste-plats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .liste-plats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .banniere h1 {
+        font-size: 2.8rem;
+    }
+}
+
+/* ---------- Impression ---------- */
+@media print {
+    nav, #bouton-menu, .bouton, button {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+    }
+}

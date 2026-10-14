@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block titre %}Menu - Chez Ngono{% endblock %}
+
+{% block contenu %}
+<section>
+    <h1>Notre menu</h1>
+    <p>Découvrez les plats, entrées et boissons proposés par le restaurant.</p>
+
+    <div class="filtres" aria-label="Filtrer le menu par catégorie">
+        <button type="button" class="filtre actif" data-categorie="tout">Tout</button>
+        <button type="button" class="filtre" data-categorie="entree">Entrées</button>
+        <button type="button" class="filtre" data-categorie="plat">Plats</button>
+        <button type="button" class="filtre" data-categorie="boisson">Boissons</button>
+    </div>
+
+    <ul id="liste-menu" class="liste-menu" aria-live="polite">
+        {% for plat in plats %}
+            <li data-categorie="{{ 'entree' if plat['categorie'] == 'entrée' else plat['categorie'] }}">
+                {{ plat['nom'] }} : {{ plat['prix'] }} FCFA
+            </li>
+        {% else %}
+            <li>Aucun plat disponible.</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

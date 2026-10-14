@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Chez Ngono, restaurant de cuisine camerounaise à Douala.">
+    <title>{% block titre %}Chez Ngono{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <a class="logo" href="{{ url_for('accueil') }}">Chez Ngono</a>
+        <button id="bouton-menu" type="button" aria-label="Ouvrir le menu"
+                aria-expanded="false">&#9776;</button>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
+                <li><a href="{{ url_for('menu') }}">Menu</a></li>
+                <li><a href="{{ url_for('reserver') }}">Réserver</a></li>
+                <li><a href="{{ url_for('reservations') }}">Réservations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="messages" aria-live="polite">
+                    {% for categorie, message in messages %}
+                        <p class="message {{ categorie }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block contenu %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Chez Ngono, rue Joss, Akwa, Douala</p>
+        <p><a href="tel:+237690000000">690 00 00 00</a> ·
+           <a href="mailto:contact@chezngono.cm">contact@chezngono.cm</a></p>
+        <p>&copy; 2026 Chez Ngono - Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
